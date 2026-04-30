@@ -1,0 +1,354 @@
+ipv6: false
+vif_only: true
+geoip_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-Country.mmdb
+asn_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-ASN.mmdb
+proxy_latency_test_url: http://1.1.1.1/generate_204
+direct_latency_test_url: http://connectivitycheck.platform.hicloud.com/generate_204
+dns:
+  bootstrap:
+  - 223.5.5.5
+  - 119.29.29.29
+  upstreams:
+    ForeignDNS:
+    - h3://dns.google/dns-query
+    - h3://cloudflare-dns.com/dns-query
+    DomesticDNS:
+    - h3://dns.pub/dns-query
+    - h3://dns.alidns.com/dns-query
+  forward:
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Advertising/Advertising_Domain.list
+      value: REJECT
+      disabled: false
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Proxy/Proxy_Domain.list
+      value: ForeignDNS
+      disabled: false
+  - proxy_rule_set:
+      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaMax/ChinaMax_Domain.list
+      value: DomesticDNS
+      disabled: false
+  - domain_wildcard:
+      match: '*'
+      value: ForeignDNS
+      disabled: false
+  proxy_nameservers:
+  - h3://dns.pub/dns-query
+  - h3://dns.alidns.com/dns-query
+  public_ip_lookup_url: https://api.myip.la
+policy_groups:
+- select:
+    name: PROXY
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+    hidden: false
+- select:
+    name: AI
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ChatGPT.png
+    hidden: false
+- select:
+    name: Google
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+    hidden: false
+- select:
+    name: GitHub
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/GitHub.png
+    hidden: false
+- select:
+    name: Telegram
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
+    hidden: false
+- select:
+    name: Instagram
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Instagram.png
+    hidden: false
+- select:
+    name: YouTube
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    hidden: false
+- select:
+    name: Netflix
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+    hidden: false
+- select:
+    name: TikTok
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok_1.png
+    hidden: false
+- select:
+    name: Spotify
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
+    hidden: false
+- select:
+    name: Twitter
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
+    hidden: false
+- select:
+    name: Facebook
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png
+    hidden: false
+- select:
+    name: Discord
+    policies:
+    - 香港节点
+    - 台湾节点
+    - 日本节点
+    - 韩国节点
+    - 新国节点
+    - 美国节点
+    flatten: false
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Discord.png
+    hidden: false
+- external:
+    name: 机场订阅
+    type: select
+    urls:
+    - 订阅地址
+    hidden: true
+- auto_test:
+    name: 香港节点
+    policies:
+    - 机场订阅
+    flatten: true
+    filter: 🇭🇰|香港|Hong Kong|HK
+    hidden: true
+- auto_test:
+    name: 台湾节点
+    policies:
+    - 机场订阅
+    flatten: true
+    filter: 🇨🇳|台湾|Taiwan|TW
+    hidden: true
+- auto_test:
+    name: 日本节点
+    policies:
+    - 机场订阅
+    flatten: true
+    filter: 🇯🇵|日本|Japan|JP
+    hidden: true
+- auto_test:
+    name: 韩国节点
+    policies:
+    - 机场订阅
+    flatten: true
+    filter: 🇰🇷|韩国|Korea|KR
+    hidden: true
+- auto_test:
+    name: 新国节点
+    policies:
+    - 机场订阅
+    flatten: true
+    filter: 🇸🇬|新加坡|Singapore|SG
+    hidden: true
+- auto_test:
+    name: 美国节点
+    policies:
+    - 机场订阅
+    flatten: true
+    filter: 🇺🇸|美国|United States|US
+    hidden: true
+rules:
+- rule_set:
+    name: Gemini
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Gemini/Gemini.list
+    policy: AI
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Claude/Claude.list
+    policy: AI
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OpenAI/OpenAI.list
+    policy: AI
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Google/Google.list
+    policy: Google
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
+    policy: GitHub
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Telegram/Telegram.list
+    policy: Telegram
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Instagram/Instagram.list
+    policy: Instagram
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/YouTube/YouTube.list
+    policy: YouTube
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Twitter/Twitter.list
+    policy: Twitter
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Facebook/Facebook.list
+    policy: Facebook
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Netflix/Netflix.list
+    policy: Netflix
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Spotify/Spotify.list
+    policy: Spotify
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/TikTok/TikTok.list
+    policy: TikTok
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Discord/Discord.list
+    policy: Discord
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Advertising/Advertising_Domain.list
+    policy: REJECT
+    disabled: false
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Proxy/Proxy_Domain.list
+    policy: PROXY
+    disabled: false
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaMax/ChinaMax_Domain.list
+    policy: DIRECT
+    disabled: false
+- rule_set:
+    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Lan/Lan.list
+    policy: DIRECT
+- geoip:
+    match: CN
+    policy: DIRECT
+- default:
+    policy: PROXY
+scriptings:
+- generic:
+    name: 万年历小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/Cal_Widget.js
+- generic:
+    name: IP 仪表盘小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/IPDashboard_Widget.js
+- generic:
+    name: 机场订阅小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/Sub_Widget.js
+- generic:
+    name: 油价查询小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/OilPrice_Widget.js
+- generic:
+    name: 服务器监控小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/ServerPro_Widget.js
+- generic:
+    name: 网速测试小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/SpeedTest_Widget.js
+- generic:
+    name: TestFlight 监控小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/TestFlight_Widget.js
+widgets:
+- name: 万年历
+  script_name: 万年历小组件
+- name: IP 仪表盘
+  script_name: IP 仪表盘小组件
+- name: 机场订阅
+  script_name: 机场订阅小组件
+  env:
+    NAME1: 机场名称
+    URL1: 订阅地址
+    RESET1: '重置日'
+- name: 油价查询
+  script_name: 油价查询小组件
+  env:
+    SHOW_TREND: 'true'
+    region: hunan/changsha
+- name: 服务器监控
+  script_name: 服务器监控小组件
+- name: 网速测试
+  script_name: 网速测试小组件
+- name: TestFlight 监控
+  script_name: TestFlight 监控小组件
+modules:
+- url: https://raw.githubusercontent.com/pmjfff/Egern/main/module/TelegramRedirect_Module.module
+  enabled: true
