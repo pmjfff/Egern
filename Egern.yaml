@@ -4,6 +4,7 @@ geoip_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLi
 asn_db_url: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/GeoLite2-ASN.mmdb
 proxy_latency_test_url: http://1.1.1.1/generate_204
 direct_latency_test_url: http://connectivitycheck.platform.hicloud.com/generate_204
+udp_latency_test_url: google.com@8.8.8.8
 dns:
   bootstrap:
   - 223.5.5.5
@@ -17,15 +18,15 @@ dns:
     - h3://dns.alidns.com/dns-query
   forward:
   - proxy_rule_set:
-      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Advertising/Advertising_Domain.list
+      match: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/rule/Reject_Rule.rule
       value: REJECT
       disabled: false
   - proxy_rule_set:
-      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Proxy/Proxy_Domain.list
+      match: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/rule/Proxy_Rule.rule
       value: ForeignDNS
       disabled: false
   - proxy_rule_set:
-      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaMax/ChinaMax_Domain.list
+      match: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/rule/Direct_Rule.rule
       value: DomesticDNS
       disabled: false
   - domain_wildcard:
@@ -286,15 +287,15 @@ rules:
     match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Discord/Discord.list
     policy: Discord
 - rule_set:
-    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Advertising/Advertising_Domain.list
+    match: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/rule/Reject_Rule.rule
     policy: REJECT
     disabled: false
 - rule_set:
-    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Proxy/Proxy_Domain.list
+    match: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/rule/Proxy_Rule.rule
     policy: PROXY
     disabled: false
 - rule_set:
-    match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/ChinaMax/ChinaMax_Domain.list
+    match: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/rule/Direct_Rule.rule
     policy: DIRECT
     disabled: false
 - rule_set:
@@ -308,47 +309,30 @@ rules:
 scriptings:
 - generic:
     name: 万年历小组件
-    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/Cal_Widget.js
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/script/Cal_Widget.js
 - generic:
-    name: IP 仪表盘小组件
-    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/IPDashboard_Widget.js
+    name: 数据中心小组件
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/script/IPDashboard_Widget.js
 - generic:
     name: 机场订阅小组件
-    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/Sub_Widget.js
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/script/Sub_Widget.js
+    env:
+      NAME1: 机场名称
+      URL1: 订阅地址
+      RESET1: '重置日'
 - generic:
     name: 油价查询小组件
-    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/OilPrice_Widget.js
-- generic:
-    name: 服务器监控小组件
-    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/ServerPro_Widget.js
-- generic:
-    name: 网速测试小组件
-    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/SpeedTest_Widget.js
-- generic:
-    name: TestFlight 监控小组件
-    script_url: https://raw.githubusercontent.com/pmjfff/Egern/main/script/TestFlight_Widget.js
+    script_url: https://raw.githubusercontent.com/pmjfff/Egern/refs/heads/main/script/OilPrice_Widget.js
+    env:
+      城市: 长沙
+      油号: '92'
+      容量: '10'
 widgets:
 - name: 万年历
   script_name: 万年历小组件
-- name: IP 仪表盘
-  script_name: IP 仪表盘小组件
+- name: 数据中心
+  script_name: 数据中心小组件
 - name: 机场订阅
   script_name: 机场订阅小组件
-  env:
-    NAME1: 机场名称
-    URL1: 订阅地址
-    RESET1: '重置日'
 - name: 油价查询
   script_name: 油价查询小组件
-  env:
-    SHOW_TREND: 'true'
-    region: hunan/changsha
-- name: 服务器监控
-  script_name: 服务器监控小组件
-- name: 网速测试
-  script_name: 网速测试小组件
-- name: TestFlight 监控
-  script_name: TestFlight 监控小组件
-modules:
-- url: https://raw.githubusercontent.com/pmjfff/Egern/main/module/TelegramRedirect_Module.module
-  enabled: true
